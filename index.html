@@ -1,39 +1,73 @@
 <script>
 
-
     var plays = ['rock', 'paper', 'scissors'];
 
+    let playerScore = 0
+    let computerScore = 0
 
-    var playerSelection = prompt("Select your hand")
-    var insensitivePS = playerSelection.toLowerCase()
+
+    game()
+
+    function game() {
 
 
-    function computerSelection() {
-        var randomPlay = plays[Math.floor(math.random() * plays.length)]
+        for (let i = 0; i < 5; i++) {
+            playerHand()
+            console.log('Player Score:' + playerScore)
+            console.log('Computer Score:' + computerScore)
+        }
+        gameDecision(playerScore, computerScore)
+    }
+
+    function gameDecision(playerScore, computerScore) {
+        if (playerScore > computerScore) {
+            alert('You won')
+            return
+        }
+        else if (computerScore > playerScore) {
+            alert('You lost')
+            return
+        }
+        else {
+            alert('You drew')
+            return
+        }
+    }
+
+    function computerHand() {
+        var randomPlay = plays[Math.floor(Math.random() * plays.length)]
         return randomPlay
     }
 
+    function playerHand() {
+        var playerSelection = prompt("Select your hand").toLowerCase()
+        let computerSelection = computerHand()
 
-    function playRound(insensitivePS, computerSelection) {
-
-        if ((insensitivePS === 'rock' && computerSelection === 'scissors') || (insensitivePS === 'scissors' && computerSelection === 'paper') || (insensitivePS === 'paper' && computerSelection === 'rock')) {
-            return `You Win! ${playerSelection} smashes ${computerSelection}`
+        if ((playerSelection.toLowerCase() == 'rock')
+            || (playerSelection.toLowerCase() == 'paper')
+            || (playerSelection.toLowerCase() == 'scissors')) {
+            console.log(playRound(playerSelection, computerSelection))
+        } else {
+            alert('Spell it correctly, fuckface')
+            playerHand()
         }
-        if ((insensitivePS === 'scissors' && computerSelection === 'rock') || (insensitivePS === 'paper' && computerSelection === 'scissors') || (insensitivePS === 'rock' && computerSelection === 'paper')) {
-            return `You Win! ${playerSelection} smashes ${computerSelection}`
+    }
+
+    function playRound(computerSelection, playerSelection) {
+        console.log('Computer Hand:' + computerSelection)
+        console.log('Player Hand:' + playerSelection)
+        if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'scissors' && computerSelection == 'paper') || (playerSelection == 'paper' && computerSelection == 'rock')) {
+            alert('You fucking won.' + playerSelection + ' smashes ' + computerSelection)
+            return ++playerScore
         }
-        return `You Lose! ${computerSelection} destroys ${playerSelection}, scumbag`
-        if (insensitivePS === computerSelection)
-            return `You Drew! ${computerSelection} mates with ${playerSelection}, pervert`
-
-
-    };
-
-    function game() {
-        for (let i = 0; i < 5; i++) {
-            console.log(playRound())
+        else if ((playerSelection == 'scissors' && computerSelection == 'rock') || (playerSelection == 'paper' && computerSelection == 'scissors') || (playerSelection == 'rock' && computerSelection == 'paper')) {
+            alert('You lost.' + computerSelection + ' detroys ' + playerSelection)
+            return ++computerScore
         }
-
+        else {
+            alert('You drew with the bot.')
+            return
+        }
     }
 
 </script>
