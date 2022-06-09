@@ -1,0 +1,39 @@
+<script>
+
+
+    var plays = ['rock', 'paper', 'scissors'];
+
+
+    var playerSelection = prompt("Select your hand")
+    var insensitivePS = playerSelection.toLowerCase()
+
+
+    function computerSelection() {
+        var randomPlay = plays[Math.floor(math.random() * plays.length)]
+        return randomPlay
+    }
+
+
+    function playRound(insensitivePS, computerSelection) {
+
+        if ((insensitivePS === 'rock' && computerSelection === 'scissors') || (insensitivePS === 'scissors' && computerSelection === 'paper') || (insensitivePS === 'paper' && computerSelection === 'rock')) {
+            return `You Win! ${playerSelection} smashes ${computerSelection}`
+        }
+        if ((insensitivePS === 'scissors' && computerSelection === 'rock') || (insensitivePS === 'paper' && computerSelection === 'scissors') || (insensitivePS === 'rock' && computerSelection === 'paper')) {
+            return `You Win! ${playerSelection} smashes ${computerSelection}`
+        }
+        return `You Lose! ${computerSelection} destroys ${playerSelection}, scumbag`
+        if (insensitivePS === computerSelection)
+            return `You Drew! ${computerSelection} mates with ${playerSelection}, pervert`
+
+
+    };
+
+    function game() {
+        for (let i = 0; i < 5; i++) {
+            console.log(playRound())
+        }
+
+    }
+
+</script>
