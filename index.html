@@ -1,73 +1,19 @@
-<script>
+<html>
 
-    var plays = ['rock', 'paper', 'scissors'];
+<head>
+    <meta charset='UTF-8'>
+    <title>Rock Paper Scissors</title>
+</head>
 
-    let playerScore = 0
-    let computerScore = 0
+<body>
+    <div class='buttonContainer'>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
 
+    <script src='app.js'>
+    </script>
+</body>
 
-    game()
-
-    function game() {
-
-
-        for (let i = 0; i < 5; i++) {
-            playerHand()
-            console.log('Player Score:' + playerScore)
-            console.log('Computer Score:' + computerScore)
-        }
-        gameDecision(playerScore, computerScore)
-    }
-
-    function gameDecision(playerScore, computerScore) {
-        if (playerScore > computerScore) {
-            alert('You won')
-            return
-        }
-        else if (computerScore > playerScore) {
-            alert('You lost')
-            return
-        }
-        else {
-            alert('You drew')
-            return
-        }
-    }
-
-    function computerHand() {
-        var randomPlay = plays[Math.floor(Math.random() * plays.length)]
-        return randomPlay
-    }
-
-    function playerHand() {
-        var playerSelection = prompt("Select your hand").toLowerCase()
-        let computerSelection = computerHand()
-
-        if ((playerSelection.toLowerCase() == 'rock')
-            || (playerSelection.toLowerCase() == 'paper')
-            || (playerSelection.toLowerCase() == 'scissors')) {
-            console.log(playRound(playerSelection, computerSelection))
-        } else {
-            alert('Spell it correctly, fuckface')
-            playerHand()
-        }
-    }
-
-    function playRound(computerSelection, playerSelection) {
-        console.log('Computer Hand:' + computerSelection)
-        console.log('Player Hand:' + playerSelection)
-        if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'scissors' && computerSelection == 'paper') || (playerSelection == 'paper' && computerSelection == 'rock')) {
-            alert('You fucking won.' + playerSelection + ' smashes ' + computerSelection)
-            return ++playerScore
-        }
-        else if ((playerSelection == 'scissors' && computerSelection == 'rock') || (playerSelection == 'paper' && computerSelection == 'scissors') || (playerSelection == 'rock' && computerSelection == 'paper')) {
-            alert('You lost.' + computerSelection + ' detroys ' + playerSelection)
-            return ++computerScore
-        }
-        else {
-            alert('You drew with the bot.')
-            return
-        }
-    }
-
-</script>
+</html>
